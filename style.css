@@ -1,0 +1,154 @@
+body {
+    margin: 0;
+    background-color: #f4f4f4;
+    padding-top: 80px;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* --- NAVIGATION BAR STYLES --- */
+.navbar {
+    background-color: #991A02;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    box-sizing: border-box;
+    height: 80px; /* Enforce height */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo-img {
+    height: 60px;
+    width: auto;
+    display: block;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-btn {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.nav-btn.active {
+    background-color: white;
+    color: #991A02;
+}
+
+/* --- HAMBURGER MENU STYLES (Hidden on Desktop) --- */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+    background-color: white; /* Default white bars */
+}
+
+/* --- SCROLLED STATE --- */
+.navbar.scrolled {
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.navbar.scrolled .nav-btn { color: #991A02; }
+.navbar.scrolled .nav-btn:hover { background-color: #f0f0f0; }
+.navbar.scrolled .nav-btn.active { background-color: #991A02; color: white; }
+
+/* Handle Hamburger color when scrolled */
+.navbar.scrolled .bar {
+    background-color: #991A02;
+}
+
+/* --- SCROLLBAR --- */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #991A02; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: white; 
+    border-radius: 6px; 
+    border: 3px solid #991A02; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #e0e0e0; 
+}
+
+/* --- MOBILE RESPONSIVENESS (NEW) --- */
+@media (max-width: 768px) {
+    /* 1. Show the Hamburger */
+    .hamburger {
+        display: block;
+        z-index: 1001; /* Ensure it stays clickable */
+    }
+
+    /* 2. Animate Hamburger to X when active */
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* 3. Style the Side Menu */
+    .nav-buttons {
+        position: fixed;
+        left: -100%; /* Start off-screen to the left */
+        top: 80px; /* Below the navbar */
+        flex-direction: column;
+        background-color: #991A02; /* Red background matching theme */
+        width: 100%; /* Full width or use 70% for a drawer look */
+        height: calc(100vh - 80px); /* Full height minus navbar */
+        text-align: center;
+        transition: 0.3s; /* Smooth slide effect */
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        gap: 0; /* Remove gap, use padding instead */
+        padding-top: 20px;
+    }
+
+    /* 4. Active State (Slide in) */
+    .nav-buttons.active {
+        left: 0; /* Bring on screen */
+    }
+
+    /* 5. Adjust Link Styles for Mobile Menu */
+    .nav-btn {
+        margin: 10px 0;
+        font-size: 1.2rem;
+        color: white !important; /* Force white text in mobile menu */
+    }
+    
+    /* Ensure body content pushes down enough */
+    body {
+        padding-top: 80px;
+    }
+}
