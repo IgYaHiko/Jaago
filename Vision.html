@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Overrides for Vision Page */
+        body {
+            background-color: #991A02;
+            background-image: radial-gradient(circle at top right, #b92b10, #991A02);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .content {
+            color: white;
+            display: flex;
+            min-height: calc(100vh - 80px);
+            max-width: 100%; 
+            padding: 0; 
+        }
+
+        .vertical-heading {
+            position: relative; 
+            align-self: flex-start; 
+            height: 120vh; 
+            writing-mode: vertical-rl;
+            text-orientation: upright; 
+            background-color: #991A02;
+            color: white; 
+            margin-left: 100px;
+            margin-right: 0px;
+            padding: 0 30px;
+            font-size: 4rem; 
+            letter-spacing: 20px; 
+            text-align: center;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            will-change: transform; 
+        }
+
+        .text-wrapper {
+            font-weight: 500;
+            font-size: 1.5rem;
+            line-height: 2.0;
+            padding: 3rem;
+            width: 100%;
+            max-width: 500px;
+            margin-left: 300px; 
+        }
+
+        .text-wrapper h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-top: 40px;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .text-wrapper p {
+            transition: transform 0.3s ease, color 0.3s ease;
+            cursor: default;
+            display: inline-block; 
+        }
+
+        .text-wrapper p:hover {
+            transform: translateX(10px); 
+            color: rgba(255, 255, 255, 2.0); 
+        }
+
+        /* Progress Bar */
+        #progress-container {
+            position: fixed; top: 0; left: 0; width: 100%; height: 5px; z-index: 2000; background: transparent;
+        }
+        #progress-bar {
+            height: 100%; background: #991A02; width: 0%; transition: width 0.1s ease-out;
+        }
+
+        /* Divider */
+        .divider {
+            height: 3px; background-color: white; width: 0px; margin: 50px 0; opacity: 0; transition: width 1s ease, opacity 0.5s ease;
+        }
+        .divider.active {
+            width: 150px; opacity: 1;
+        }
+
+        /* Word Span */
+        .word-span {
+            opacity: 0.1; filter: blur(2px); transition: all 0.5s ease; display: inline-block;
+        }
+        .word-span.active {
+            opacity: 1; filter: blur(0); transform: translateY(0);
+        }
+
+        /* --- MOBILE RESPONSIVE OVERRIDES --- */
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+            }
+
+            .vertical-heading {
+                writing-mode: horizontal-tb;
+                height: auto;
+                width: 100%;
+                margin: 0;
+                padding: 30px 0;
+                font-size: 3rem;
+                letter-spacing: 10px;
+            }
+
+            .text-wrapper {
+                margin-left: 0;
+                padding: 20px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .text-wrapper h2 {
+                font-size: 2.5rem;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .divider {
+                margin: 30px auto; /* Center dividers */
+            }
+
+            /* Adjust first letter size for mobile if used */
+            .text-wrapper p:first-of-type::first-letter {
+                font-size: 3rem; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="progress-container">
+        <div id="progress-bar"></div>
+    </div>
+    <nav class="navbar" id="navbar">
+        <a href="index.html" class="logo">
+            <img src="logo.png" alt="Company Logo" class="logo-img">
+        </a>
+
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="index.html" class="nav-btn">Home</a>
+            <a href="Vision.html" class="nav-btn">Vision</a>
+            <a href="#" class="nav-btn">Our Goals</a>
+            <a href="Contacts.html" class="nav-btn">Contact</a>
+        </div>
+    </nav>
+
+    <div class="content">
+        <h1 class="vertical-heading">VISION</h1>
+
+        <div class="text-wrapper">
+            <h2>The Future</h2>
+            <p class="reveal">To be the voice for children living in red-light areas 
+                — providing education, opportunities, and a future free from the cycle of forced prostitution.</p>
+            <div class="divider"></div>
+            <p>At JAAGO, we stand for the rights, dignity, and dreams of the most vulnerable.</p>
+            <div class="divider"></div>
+            <p>The vision is to break the cycle of second-generation prostitution by creating pathways
+                 to quality education, better health, safe environments, and empowering opportunities.</p>
+            <div class="divider"></div>
+            <p>Through awareness, community support, and relentless action, we aim to build a future
+                 where every child can thrive, dream, and reclaim their right to choose their life.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
